@@ -1,0 +1,37 @@
+<header role="banner">
+  <nav class="nav" role="navigation" aria-label="Main Navigation">
+    <a class="logo" href="index.html" aria-label="Homepage">RoshithRobert</a>
+
+    <ul class="nav-links" role="menubar">
+      <li><a role="menuitem" href="index.html">Home</a></li>
+      <li><a role="menuitem" href="projects.html">Projects</a></li>
+      <li><a role="menuitem" href="skills.html">Skills</a></li>
+      <li><a role="menuitem" href="about.html">About</a></li>
+      <li><a role="menuitem" href="contact.html">Contact</a></li>
+
+      <!-- Sliding indicator element (positioned absolutely inside the ul) -->
+      <div class="nav-indicator" aria-hidden="true"></div>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- THEME SWITCH (sun/moon sliding toggle) -->
+      <button id="theme-switch" class="theme-switch" aria-label="Toggle theme" aria-pressed="false" title="Toggle theme">
+        <span class="ts-track">
+          <span class="ts-thumb" aria-hidden="true">
+            <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.8 1.8-1.8zM1 13h3v-2H1v2zm10-9h2V1h-2v3zm7.03 2.05l1.8-1.79-1.79-1.79-1.8 1.79 1.79 1.79zM17.24 19.16l1.79 1.79 1.79-1.79-1.79-1.79-1.79 1.79zM20 11v2h3v-2h-3zM11 20h2v3h-2v-3zM4.24 19.16l1.8-1.8L4.24 15.56l-1.8 1.8 1.8 1.8zM12 6a6 6 0 100 12 6 6 0 000-12z"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          </span>
+        </span>
+      </button>
+      <span data-lottie="https://assets10.lottiefiles.com/packages/lf20_jmBauI.json"></span>
+
+      <!-- small resume/hire CTA (optional) -->
+      <a href="/resume.pdf" class="btn small" target="_blank" rel="noopener">Resume</a>
+
+      <!-- mobile hamburger -->
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>

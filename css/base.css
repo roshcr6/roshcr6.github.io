@@ -1,0 +1,39 @@
+/* base.css - reset and utilities */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;font-family:"Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg); color:var(--text);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  transition:background var(--transition), color var(--transition);
+}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+a{color:inherit; text-decoration:none}
+img{max-width:100%;display:block}
+.hidden{display:none !important}
+.muted{color:var(--muted)}
+.center{display:flex;align-items:center;justify-content:center}
+
+/* ========== NAV INDICATOR ========== */
+.nav-links { position:relative; }
+.nav-indicator{
+  position:absolute;
+  bottom:6px;
+  left:0;
+  height:4px;
+  width:60px;
+  border-radius:4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transform: translateX(0);
+  transition: transform .35s cubic-bezier(.2,.9,.3,1), width .35s;
+  pointer-events:none;
+  opacity:0.95;
+}
+
+/* make sure the UL is positioned and won't clip the indicator */
+.nav .nav-links { padding-bottom:18px; }
+
+/* ========== PAGE TRANSITIONS ========== */
+.page-wrap { opacity: 0; transform: translateY(6vh); transition: transform .48s cubic-bezier(.2,.9,.3,1), opacity .48s; will-change: transform, opacity; }
+body.page-enter .page-wrap { opacity:1; transform:none; }
+body.page-exit .page-wrap { opacity:0; transform: translateY(-6vh); }

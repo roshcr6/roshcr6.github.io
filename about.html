@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Roshith Robert</title>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+<div class="page-wrap"></div>
+  <main class="container" id="main" role="main">
+    <section class="fullpage-section about-section" id="about" aria-label="About section">
+      <div class="section-container" style="display:flex;gap:40px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:320px;">
+          <h2>About Me</h2>
+          <p>I create immersive web and game experiences — combining clean UI, performant code, and playful interaction. I enjoy prototyping game mechanics and shipping polished front-end interfaces.</p>
+          <blockquote class="muted">“Code is my canvas, games are my playground.”</blockquote>
+
+          <div style="margin-top:20px;">
+            <a class="btn" href="mailto:example@email.com">Email Me</a>
+            <a class="btn-outline" href="/resume.pdf" target="_blank" rel="noopener">Download CV</a>
+          </div>
+        </div>
+
+        <div style="flex:1;min-width:320px;">
+          <h2>Experience Timeline</h2>
+
+          <!-- timeline container - populated by js/timeline.js -->
+          <div id="timeline" class="timeline" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div><!-- GSAP (animation) + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Lottie Web Component (for micro-animations) -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<!-- then your main.js -->
+<script type="module" src="js/main.js"></script>
+
+
+  <div id="footer-placeholder"></div>
+
+</body>
+</html>

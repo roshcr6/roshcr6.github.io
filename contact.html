@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Roshith Robert</title>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+<div class="page-wrap">
+  <main class="container" id="main" role="main">
+    <section class="fullpage-section contact-section" id="contact" aria-label="Contact">
+      <div style="display:flex;gap:40px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:320px;">
+          <h2>Get in touch</h2>
+          <p class="muted">Interested in collaborating? Send an email or use the form.</p>
+
+          <div style="margin-top:18px;">
+            <a class="card contact-card" href="mailto:example@email.com" style="display:block;padding:12px;border-radius:10px;">
+              <strong>Email</strong><br><span class="muted">example@email.com</span>
+            </a>
+
+            <a class="card contact-card" href="https://github.com/username" target="_blank" rel="noopener" style="display:block;padding:12px;border-radius:10px;margin-top:10px;">
+              <strong>GitHub</strong><br><span class="muted">@username</span>
+            </a>
+          </div>
+        </div>
+
+        <div style="flex:1;min-width:320px;">
+          <form class="card contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="padding:18px;">
+            <label style="display:block;margin-bottom:10px">
+              <span class="muted">Name</span>
+              <input type="text" name="name" required style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)">
+            </label>
+            <label style="display:block;margin-bottom:10px">
+              <span class="muted">Email</span>
+              <input type="email" name="email" required style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)">
+            </label>
+            <label style="display:block;margin-bottom:10px">
+              <span class="muted">Message</span>
+              <textarea name="message" rows="6" required style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)"></textarea>
+            </label>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+  <div id="footer-placeholder"></div>
+<!-- GSAP (animation) + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Lottie Web Component (for micro-animations) -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<!-- then your main.js -->
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>

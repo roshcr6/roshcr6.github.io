@@ -1,0 +1,12 @@
+@media (max-width:1000px){
+  .hero-inner{flex-direction:column-reverse;text-align:center}
+  .profile-photo{width:220px;height:220px}
+  .nav-links{display:none}
+  .nav-indicator { display:none; }
+  .hamburger{display:block}
+  .nav-links.active{display:flex;position:absolute;right:20px;top:64px;flex-direction:column;background:var(--panel);padding:12px;border-radius:10px;box-shadow:var(--shadow)}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+}
+

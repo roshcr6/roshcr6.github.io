@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Home — Roshith Robert</title>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader" class="preloader center"><div class="loader"></div></div>
+
+  <!-- Header and Footer are loaded into these placeholders by loader.js -->
+  <div id="header-placeholder"></div>
+<div class="page-wrap">
+
+  <main class="container" id="main" role="main">
+    <!-- HERO -->
+    <section class="fullpage-section hero" id="home" aria-label="Home section">
+      <div id="tsparticles" style="position:absolute; inset:0; z-index:-1;"></div>
+
+      <div class="hero-inner">
+        <div class="hero-left">
+          <h1 class="hero-title">Hi, I'm <span class="accent">Roshith</span></h1>
+          <p class="muted">Front-End Developer & Game Developer — I build interactive, performant experiences.</p>
+          <div style="margin-top:18px;">
+            <a class="btn" href="projects.html">See My Work</a>
+            <a class="btn-outline" href="about.html">About</a>
+          </div>
+          <p class="scroll-hint muted">Scroll or use the navigation to explore</p>
+        </div>
+
+        <div class="hero-right">
+          <div class="card profile-card">
+            <img class="profile-photo" src="images/profile.jpg" alt="Roshith portrait" loading="lazy" width="320" height="320">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+  <div id="footer-placeholder"></div>
+
+  <!-- libs (used by particles & tilt — safe to include site-wide) -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+<!-- GSAP (animation) + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Lottie Web Component (for micro-animations) -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<!-- then your main.js -->
+<script type="module" src="js/main.js"></script>
+
+  <!-- orchestrator (ES modules) -->
+</body>
+</html>

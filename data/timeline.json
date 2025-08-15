@@ -1,0 +1,25 @@
+[
+  {
+    "id":"freelance",
+    "title":"Front-End Developer — Freelance",
+    "range":"2023 — Present",
+    "icon":"💻",
+    "summary":"Built responsive web apps with React/Next.js. Focus on performance & accessibility.",
+    "points":["Launched 5 client projects","Improved average load time by 35%"]
+  },
+  {
+    "id":"indie",
+    "title":"Indie Game Developer",
+    "range":"2021 — 2023",
+    "icon":"🎮",
+    "summary":"Designed and shipped prototypes in Unity & Godot focusing on mechanics and UX.",
+    "points":["Published prototypes with 3k+ plays","Won 2 game jam awards"]
+  },
+  {
+    "id":"degree",
+    "title":"BSc Computer Science",
+    "range":"2018 — 2021",
+    "icon":"🎓",
+    "summary":"Specialized in algorithms, game programming and software engineering."
+  }
+]

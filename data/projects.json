@@ -1,0 +1,56 @@
+[
+  {
+  "id":"puzzle-prototype",
+  "title":"Puzzle Prototype",
+  "thumb":"images/project2.jpg",
+  "preview":"videos/puzzle-preview.mp4",
+  "excerpt":"Unity 2D puzzle game prototype",
+  "tags":["game","unity"],
+  "demo":"https://itch.io/..",
+  "repo":"",
+  "case":"case-study.html?id=puzzle-prototype"
+}
+, 
+  {
+    "id":"api-dashboard",
+    "title":"API Dashboard",
+    "thumb":"images/project3.jpg",
+    "preview":"videos/api-dashboard-preview.mp4",
+    "excerpt":"Node.js backend + React dashboard with charts",
+    "tags":["web","node"],
+    "demo":"",
+    "repo":"",
+    "case":"case-study.html?id=api-dashboard"
+  }
+,
+  {
+    "id":"portfolio-redesign",
+    "title":"Portfolio Redesign",
+    "thumb":"images/project1.jpg",
+    "excerpt":"React / Next.js • Responsive, accessible portfolio",
+    "tags":["web","react"],
+    "demo":"https://example.com",
+    "repo":"https://github.com/username/portfolio",
+    "case":"case-study.html?id=portfolio-redesign"
+  },
+  {
+    "id":"puzzle-prototype",
+    "title":"Puzzle Prototype",
+    "thumb":"images/project2.jpg",
+    "excerpt":"Unity 2D puzzle game prototype",
+    "tags":["game","unity"],
+    "demo":"https://itch.io/..",
+    "repo":"",
+    "case":"case-study.html?id=puzzle-prototype"
+  },
+  {
+    "id":"api-dashboard",
+    "title":"API Dashboard",
+    "thumb":"images/project3.jpg",
+    "excerpt":"Node.js backend + React dashboard with charts",
+    "tags":["web","node"],
+    "demo":"",
+    "repo":"https://github.com/username/api-dashboard",
+    "case":"case-study.html?id=api-dashboard"
+  }
+]

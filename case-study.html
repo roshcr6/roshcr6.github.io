@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Case Study — Roshith Robert</title>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+<div class="page-wrap">
+  <main class="container" id="main" role="main" style="padding-top:48px;">
+    <section class="fullpage-section" id="case" aria-label="Case study">
+      <div id="case-content" class="container">
+        <!-- populated by inline script -->
+        <div class="center muted">Loading case study…</div>
+      </div>
+    </section>
+  </main>
+</div>
+  <div id="footer-placeholder"></div>
+
+  <script type="module">
+    // small renderer: read ?id and render project data from data/projects.json
+    (async function renderCase(){
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const target = document.getElementById('case-content');
+      if(!id){ target.innerHTML = '<p class="muted">No case id provided.</p>'; return; }
+      try{
+        const res = await fetch('data/projects.json');
+        const list = await res.json();
+        const p = list.find(x => x.id === id);
+        if(!p){ target.innerHTML = '<p class="muted">Case not found.</p>'; return; }
+
+        target.innerHTML = `
+          <a href="projects.html" class="btn small" style="margin-bottom:14px;">← Back</a>
+          <h1>${p.title}</h1>
+          <p class="muted">${p.excerpt}</p>
+          <div style="margin-top:18px;">
+            <img src="${p.thumb}" alt="${p.title} screenshot" loading="lazy" style="width:100%;max-height:520px;object-fit:cover;border-radius:12px;">
+          </div>
+
+          <article style="margin-top:20px;" class="card" id="case-body">
+            <div style="padding:20px;">
+              <h3>Overview</h3>
+              <p>${p.detail || 'Detailed case study content goes here. Include problem, solution, role, tech stack, and measurable impact (metrics).'}</p>
+              <h4>Tech</h4>
+              <p>${p.tags.join(', ')}</p>
+              <div style="margin-top:14px;">
+                ${p.demo ? `<a class="btn small" href="${p.demo}" target="_blank" rel="noopener">Live Demo</a>` : ''}
+                ${p.repo ? `<a class="btn-outline" href="${p.repo}" target="_blank" rel="noopener">Source</a>` : ''}
+              </div>
+            </div>
+          </article>
+        `;
+      }catch(err){
+        target.innerHTML = '<p class="muted">Failed to load case data.</p>';
+        console.error(err);
+      }
+    })();
+  </script>
+<!-- GSAP (animation) + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Lottie Web Component (for micro-animations) -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<!-- then your main.js -->
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
