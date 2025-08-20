@@ -1,7 +1,7 @@
 [
-  {"name":"HTML/CSS","level":95,"tag":"web"},
-  {"name":"JavaScript","level":90,"tag":"web"},
-  {"name":"React / Next","level":85,"tag":"web"},
-  {"name":"Unity","level":78,"tag":"game"},
-  {"name":"Node.js","level":75,"tag":"backend"}
+  {"name":"HTML/CSS","level":45,"tag":"web"},
+  {"name":"JavaScript","level":30,"tag":"web"},
+  {"name":"React / Next","level":35,"tag":"web"},
+  {"name":"Unity","level":58,"tag":"game"},
+  {"name":"Node.js","level":25,"tag":"backend"}
 ]

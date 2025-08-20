@@ -19,11 +19,11 @@
 .theme-switch { --w:56px; --h:30px; background:transparent;border:0;padding:0;cursor:pointer;display:inline-flex;align-items:center; }
 .theme-switch .ts-track { width:var(--w); height:var(--h); background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border-radius:999px; display:flex; align-items:center; padding:4px; transition:background .35s, box-shadow .35s; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
 .theme-switch .ts-thumb { width: calc(var(--h) - 8px); height: calc(var(--h) - 8px); background:var(--panel); border-radius:50%; display:inline-grid; place-items:center; transform:translateX(0); transition: transform .45s cubic-bezier(.2,.9,.3,1), background .35s; color:var(--primary); box-shadow: 0 8px 28px rgba(0,0,0,0.5); }
-.theme-switch .icon-moon{ display:none; }
+.theme-switch .icon-sun{ display:none; }
 .theme-switch[data-theme="light"] .ts-track { background: linear-gradient(90deg, #ffefc6, #ffd59a); box-shadow: 0 8px 30px rgba(255,200,100,0.08); }
 .theme-switch[data-theme="light"] .ts-thumb { transform: translateX(calc(var(--w) - var(--h))); color: #f5a623; background: #fff; }
-.theme-switch[data-theme="light"] .icon-sun{ display:none; }
-.theme-switch[data-theme="light"] .icon-moon{ display:inline-block; }
+.theme-switch[data-theme="light"] .icon-moon{ display:none; }
+.theme-switch[data-theme="light"] .icon-sun{ display:inline-block; }
 .theme-switch:focus { outline: 2px solid var(--primary); outline-offset:3px; border-radius:999px; }
 
 /* ====== NAV GLASS & AURA ====== */

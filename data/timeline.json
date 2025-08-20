@@ -1,5 +1,13 @@
 [
   {
+    "id":"degree",
+    "title":"B.tech Computer Science\nMinor In Robotics &Automation",
+    "range":"2024 — 2028",
+    "icon":"🎓",
+    "summary":"Specialized in algorithms, game programming and software engineering."
+  }
+,
+{
     "id":"freelance",
     "title":"Front-End Developer — Freelance",
     "range":"2023 — Present",
@@ -10,16 +18,10 @@
   {
     "id":"indie",
     "title":"Indie Game Developer",
-    "range":"2021 — 2023",
+    "range":"2025-Present",
     "icon":"🎮",
     "summary":"Designed and shipped prototypes in Unity & Godot focusing on mechanics and UX.",
     "points":["Published prototypes with 3k+ plays","Won 2 game jam awards"]
-  },
-  {
-    "id":"degree",
-    "title":"BSc Computer Science",
-    "range":"2018 — 2021",
-    "icon":"🎓",
-    "summary":"Specialized in algorithms, game programming and software engineering."
   }
 ]
+  
