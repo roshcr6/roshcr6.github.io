@@ -31,6 +31,35 @@ const FloatingShape = ({ delay, size, top, left, color }: { delay: number; size:
   />
 );
 
+// Morphing blob component
+const MorphingBlob = ({ color, size, position, delay }: { 
+  color: string; 
+  size: number; 
+  position: { top?: string; bottom?: string; left?: string; right?: string };
+  delay: number;
+}) => (
+  <motion.div
+    className="absolute morphing-blob pointer-events-none"
+    style={{
+      width: size,
+      height: size,
+      ...position,
+      background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
+      filter: 'blur(80px)',
+    }}
+    animate={{
+      scale: [1, 1.2, 0.9, 1.1, 1],
+      rotate: [0, 90, 180, 270, 360],
+    }}
+    transition={{
+      duration: 20,
+      delay,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    }}
+  />
+);
+
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -98,6 +127,11 @@ const Hero = () => {
       <FloatingShape delay={1} size={200} top="60%" left="75%" color="#FF8C00" />
       <FloatingShape delay={2} size={150} top="30%" left="85%" color="#FF4D4D" />
       <FloatingShape delay={1.5} size={100} top="70%" left="20%" color="#FF6B6B" />
+
+      {/* Morphing blobs - premium effect */}
+      <MorphingBlob color="rgba(255,77,77,0.15)" size={500} position={{ top: '10%', left: '5%' }} delay={0} />
+      <MorphingBlob color="rgba(255,140,0,0.12)" size={400} position={{ bottom: '10%', right: '10%' }} delay={5} />
+      <MorphingBlob color="rgba(147,51,234,0.08)" size={350} position={{ top: '50%', right: '20%' }} delay={10} />
 
       {/* Animated gradient blob following mouse */}
       <motion.div 

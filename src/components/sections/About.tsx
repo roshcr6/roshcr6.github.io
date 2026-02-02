@@ -74,6 +74,13 @@ const About = () => {
     { value: 100, suffix: '%', label: 'Passion' },
   ];
 
+  const timeline = [
+    { year: '2024', title: 'Full Stack Developer', desc: 'Building modern web apps' },
+    { year: '2023', title: 'Game Developer', desc: 'Created indie games with Godot' },
+    { year: '2022', title: 'Frontend Focus', desc: 'Mastered React & TypeScript' },
+    { year: '2021', title: 'Started Coding', desc: 'First lines of Python' },
+  ];
+
   return (
     <div
       ref={sectionRef}
@@ -158,32 +165,96 @@ const About = () => {
               </span>
             </motion.div>
 
-            {/* Main heading - Premium serif */}
+            {/* Main heading - HERO STYLE Premium typography */}
             <h2 
-              className="text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-[1.1] reveal"
+              className="text-5xl md:text-6xl lg:text-[5.5rem] text-white mb-10 leading-[0.95] reveal tracking-[-0.02em]"
               style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}
             >
-              I don't just write{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#FF8C00]">
-                code
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block"
+                  initial={{ y: 100 }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  I don't just write
+                </motion.span>
               </span>
-              <br />
-              I design how people{' '}
-              <span style={{ fontStyle: 'italic' }}>feel</span>
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] via-[#FF6B35] to-[#FF8C00]"
+                  initial={{ y: 100 }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ fontStyle: 'italic' }}
+                >
+                  code
+                  <motion.span 
+                    className="inline-block text-[#FF4D4D] ml-3"
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                  >
+                    ✦
+                  </motion.span>
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block"
+                  initial={{ y: 100 }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  I design how
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block"
+                  initial={{ y: 100 }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  people{' '}
+                  <span className="relative inline-block" style={{ fontStyle: 'italic' }}>
+                    feel
+                    <motion.span 
+                      className="absolute -bottom-2 left-0 h-[3px] bg-gradient-to-r from-[#FF4D4D] to-[#FF8C00] rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '100%' }}
+                      transition={{ duration: 0.8, delay: 0.8 }}
+                    />
+                  </span>
+                </motion.span>
+              </span>
             </h2>
 
-            {/* Description */}
+            {/* Description - Elegant prose */}
             <div 
-              className="space-y-6 text-white/60 text-base leading-[1.9] reveal"
+              className="space-y-6 text-white/50 text-lg leading-[2] reveal max-w-xl"
               style={{ fontFamily: 'var(--font-sans)', fontWeight: 300 }}
             >
               <p>
-                I'm a <span className="text-white" style={{ fontWeight: 500 }}>full-stack developer</span> and{' '}
-                <span className="text-white" style={{ fontWeight: 500 }}>game creator</span> from Alappuzha, Kerala. 
-                I believe that the best digital products are those that feel{' '}
-                <span className="text-[#FF4D4D]" style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic' }}>invisible</span> — they just work, beautifully.
+                I'm a{' '}
+                <span className="text-white font-medium relative group">
+                  full-stack developer
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-white/20 group-hover:bg-[#FF4D4D] transition-colors" />
+                </span>
+                {' '}and{' '}
+                <span className="text-white font-medium relative group">
+                  game creator
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-white/20 group-hover:bg-[#FF4D4D] transition-colors" />
+                </span>
+                {' '}from Alappuzha, Kerala. I believe that the best digital products are those that feel{' '}
+                <span 
+                  className="text-[#FF4D4D] font-normal"
+                  style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic' }}
+                >
+                  invisible
+                </span>
+                {' '}— they just work, beautifully.
               </p>
-              <p>
+              <p className="text-white/40">
                 When I'm not coding, you'll find me designing game mechanics, exploring new frameworks, 
                 or crafting experiences that make people smile.
               </p>
@@ -212,6 +283,46 @@ const About = () => {
                   </p>
                 </div>
               ))}
+            </div>
+
+            {/* Experience Timeline */}
+            <div className="mt-12 reveal">
+              <h3 
+                className="text-[10px] text-white/40 uppercase mb-6"
+                style={{ fontFamily: 'var(--font-mono)', letterSpacing: '0.2em' }}
+              >
+                Journey
+              </h3>
+              <div className="timeline">
+                {timeline.map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    className="timeline-item group"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <span 
+                      className="text-[#FF4D4D] text-xs block mb-1"
+                      style={{ fontFamily: 'var(--font-mono)' }}
+                    >
+                      {item.year}
+                    </span>
+                    <h4 
+                      className="text-white text-sm group-hover:text-[#FF4D4D] transition-colors"
+                      style={{ fontFamily: 'var(--font-sans)', fontWeight: 500 }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p 
+                      className="text-white/40 text-xs mt-1"
+                      style={{ fontFamily: 'var(--font-sans)' }}
+                    >
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
 

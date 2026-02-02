@@ -130,29 +130,59 @@ const Projects = () => {
             </span>
           </motion.div>
 
-          {/* Main heading */}
-          <motion.h2 
-            className="text-5xl lg:text-6xl text-white mb-5 leading-[1]"
-            style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}
+          {/* Main heading - HERO STYLE */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            Selected
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#FF8C00]">
-              Projects
-            </span>
-          </motion.h2>
+            <h2 
+              className="text-6xl lg:text-[5rem] text-white mb-6 leading-[0.9] tracking-[-0.03em]"
+              style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}
+            >
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block"
+                  initial={{ y: 80 }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  Selected
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] via-[#FF6B35] to-[#FF8C00]"
+                  initial={{ y: 80 }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ fontStyle: 'italic' }}
+                >
+                  Projects
+                  <motion.span 
+                    className="inline-block text-[#FF4D4D] ml-2 text-4xl"
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+                  >
+                    ◈
+                  </motion.span>
+                </motion.span>
+              </span>
+            </h2>
+          </motion.div>
 
           <motion.p 
-            className="text-white/40 text-sm leading-relaxed mb-10"
+            className="text-white/40 text-base leading-[1.9] mb-10 max-w-sm"
             style={{ fontFamily: 'var(--font-sans)', fontWeight: 300 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            A curated collection of work that showcases my passion for creating meaningful digital experiences.
+            A curated collection of work that showcases my passion for creating{' '}
+            <span className="text-white/70" style={{ fontStyle: 'italic', fontFamily: 'var(--font-display)' }}>
+              meaningful
+            </span>{' '}
+            digital experiences.
           </motion.p>
 
           {/* Mini stats */}

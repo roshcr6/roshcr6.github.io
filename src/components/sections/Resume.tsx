@@ -138,9 +138,14 @@ const Resume = () => {
       {/* Main content */}
       <div className="relative z-10 w-full h-full flex items-center px-8 md:px-16 lg:px-24 overflow-y-auto py-24">
         <div className="max-w-7xl mx-auto w-full">
-          {/* Section header */}
-          <motion.div className="flex items-center gap-4 mb-16 reveal">
-            <div className="w-12 h-px bg-[#FF4D4D]" />
+          {/* Section header - HERO STYLE */}
+          <motion.div className="flex items-center gap-4 mb-12 reveal">
+            <motion.div 
+              className="w-3 h-3 rounded-full bg-[#FF4D4D]"
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+            <div className="w-12 h-px bg-gradient-to-r from-[#FF4D4D] to-transparent" />
             <span 
               className="text-[#FF4D4D] text-xs uppercase"
               style={{ fontFamily: 'var(--font-mono)', letterSpacing: '0.25em' }}
@@ -149,17 +154,82 @@ const Resume = () => {
             </span>
           </motion.div>
 
+          {/* Main Title - Premium Hero Style */}
+          <motion.div
+            className="mb-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <h1 
+              className="text-5xl md:text-6xl lg:text-[5rem] text-white leading-[0.9] tracking-[-0.03em] mb-6"
+              style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}
+            >
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block"
+                  initial={{ y: 100 }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  My
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block"
+                  initial={{ y: 100 }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] via-[#FF6B35] to-[#FF8C00]" style={{ fontStyle: 'italic' }}>
+                    Journey
+                  </span>
+                  <motion.span 
+                    className="inline-block text-[#FF4D4D] ml-3 text-4xl"
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                  >
+                    ✦
+                  </motion.span>
+                </motion.span>
+              </span>
+            </h1>
+            <p 
+              className="text-white/40 text-lg max-w-xl leading-[1.8]"
+              style={{ fontFamily: 'var(--font-sans)', fontWeight: 300 }}
+            >
+              A timeline of{' '}
+              <span className="text-white/70" style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic' }}>growth</span>,{' '}
+              <span className="text-white/70" style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic' }}>learning</span>, and{' '}
+              <span className="text-white/70" style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic' }}>building</span>.
+            </p>
+          </motion.div>
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Left column - Experience */}
             <div className="lg:col-span-2 space-y-12">
               {/* Experience section */}
               <div className="reveal">
                 <h2 
-                  className="text-3xl md:text-4xl text-white mb-8 flex items-center gap-4"
+                  className="text-4xl md:text-5xl text-white mb-10 flex items-center gap-4"
                   style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}
                 >
-                  <span className="text-[#FF4D4D]">●</span>
-                  Experience
+                  <motion.span 
+                    className="text-[#FF4D4D] text-2xl"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    ●
+                  </motion.span>
+                  <span className="relative">
+                    Experience
+                    <motion.span 
+                      className="absolute -bottom-2 left-0 h-[2px] bg-gradient-to-r from-[#FF4D4D] to-transparent rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '60%' }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                    />
+                  </span>
                 </h2>
                 
                 <div className="space-y-8">
@@ -204,11 +274,25 @@ const Resume = () => {
               {/* Education */}
               <div className="reveal">
                 <h2 
-                  className="text-3xl md:text-4xl text-white mb-8 flex items-center gap-4"
+                  className="text-4xl md:text-5xl text-white mb-10 flex items-center gap-4"
                   style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}
                 >
-                  <span className="text-[#FF4D4D]">●</span>
-                  Education
+                  <motion.span 
+                    className="text-[#FF4D4D] text-2xl"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                  >
+                    ●
+                  </motion.span>
+                  <span className="relative">
+                    Education
+                    <motion.span 
+                      className="absolute -bottom-2 left-0 h-[2px] bg-gradient-to-r from-[#FF4D4D] to-transparent rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '50%' }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                    />
+                  </span>
                 </h2>
                 
                 {education.map((edu, i) => (
@@ -245,11 +329,25 @@ const Resume = () => {
               {/* Skills grid */}
               <div className="reveal">
                 <h2 
-                  className="text-3xl md:text-4xl text-white mb-8 flex items-center gap-4"
+                  className="text-4xl md:text-5xl text-white mb-10 flex items-center gap-4"
                   style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}
                 >
-                  <span className="text-[#FF4D4D]">●</span>
-                  Skills
+                  <motion.span 
+                    className="text-[#FF4D4D] text-2xl"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                  >
+                    ●
+                  </motion.span>
+                  <span className="relative">
+                    Skills
+                    <motion.span 
+                      className="absolute -bottom-2 left-0 h-[2px] bg-gradient-to-r from-[#FF4D4D] to-transparent rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '40%' }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                    />
+                  </span>
                 </h2>
                 
                 <div className="grid grid-cols-2 gap-8">

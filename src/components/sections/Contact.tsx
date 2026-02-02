@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Confetti, LiveClock, FloatingLabelInput, RippleButton } from '../MicroInteractions';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -10,7 +11,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,14 +19,18 @@ const Contact = () => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
     setIsSuccess(true);
+    setShowConfetti(true);
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 3000);
     setTimeout(() => {
       setIsSuccess(false);
       setFormState({ name: '', email: '', message: '' });
-    }, 3000);
+    }, 4000);
   };
 
   const socialLinks = [
-    { name: 'GitHub', icon: 'github', url: 'https://github.com/roshithrobert', color: '#6e5494' },
+    { name: 'GitHub', icon: 'github', url: 'https://github.com/roshcr6', color: '#6e5494' },
     { name: 'LinkedIn', icon: 'linkedin', url: 'https://linkedin.com/in/roshithrobert', color: '#0A66C2' },
     { name: 'Twitter', icon: 'twitter', url: 'https://twitter.com/roshithrobert', color: '#1DA1F2' },
     { name: 'Email', icon: 'email', url: 'mailto:roshithrobert7@gmail.com', color: '#FF4D4D' },
@@ -36,6 +41,9 @@ const Contact = () => {
       ref={sectionRef}
       className="relative w-screen h-screen flex items-center overflow-hidden bg-[#0a0a0a]"
     >
+      {/* Confetti on success */}
+      <Confetti active={showConfetti} />
+
       {/* Background */}
       <div className="absolute inset-0">
         {/* Large text with animation */}
@@ -53,29 +61,21 @@ const Contact = () => {
           LET'S TALK
         </motion.div>
 
+        {/* Animated mesh gradient background */}
+        <div className="absolute inset-0 mesh-gradient opacity-50" />
+
         {/* Animated gradient orbs */}
         <motion.div 
-          className="absolute bottom-0 right-0 w-[60vw] h-[60vh] rounded-full blur-[150px]"
-          animate={{
-            background: [
-              'radial-gradient(circle, rgba(255,77,77,0.15) 0%, transparent 70%)',
-              'radial-gradient(circle, rgba(255,140,0,0.15) 0%, transparent 70%)',
-              'radial-gradient(circle, rgba(255,77,77,0.15) 0%, transparent 70%)',
-            ],
-          }}
-          transition={{ duration: 6, repeat: Infinity }}
+          className="absolute bottom-0 right-0 w-[60vw] h-[60vh] rounded-full blur-[150px] morphing-blob"
+          style={{ background: 'radial-gradient(circle, rgba(255,77,77,0.15) 0%, transparent 70%)' }}
         />
         
         <motion.div 
-          className="absolute top-20 left-20 w-[40vw] h-[40vh] rounded-full blur-[120px]"
-          animate={{
-            background: [
-              'radial-gradient(circle, rgba(147,51,234,0.08) 0%, transparent 70%)',
-              'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)',
-              'radial-gradient(circle, rgba(147,51,234,0.08) 0%, transparent 70%)',
-            ],
+          className="absolute top-20 left-20 w-[40vw] h-[40vh] rounded-full blur-[120px] morphing-blob"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(147,51,234,0.08) 0%, transparent 70%)',
+            animationDelay: '-10s',
           }}
-          transition={{ duration: 8, repeat: Infinity }}
         />
 
         {/* Grid pattern */}
@@ -104,29 +104,69 @@ const Contact = () => {
               </span>
             </motion.div>
 
-            {/* Main heading */}
+            {/* Main heading - HERO STYLE TYPOGRAPHY */}
             <h2 
-              className="text-5xl md:text-6xl lg:text-7xl text-white mb-8 leading-[0.95] reveal"
+              className="text-5xl md:text-6xl lg:text-[5.5rem] text-white mb-10 leading-[0.9] reveal tracking-[-0.02em]"
               style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}
             >
-              Let's build
-              <br />
-              something{' '}
-              <span 
-                className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#FF8C00]"
-                style={{ fontStyle: 'italic' }}
-              >
-                unforgettable
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block"
+                  initial={{ y: 100 }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  Let's build
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block"
+                  initial={{ y: 100 }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  something
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span 
+                  className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] via-[#FF6B35] to-[#FF8C00]"
+                  initial={{ y: 100 }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ fontStyle: 'italic' }}
+                >
+                  unforgettable
+                  <motion.span 
+                    className="inline-block text-[#FF4D4D] ml-3 text-4xl"
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                  >
+                    ✦
+                  </motion.span>
+                </motion.span>
               </span>
             </h2>
 
-            {/* Description */}
+            {/* Description - Elegant prose */}
             <p 
-              className="text-white/60 text-base leading-[1.9] mb-12 max-w-lg reveal"
+              className="text-white/50 text-lg leading-[2] mb-12 max-w-lg reveal"
               style={{ fontFamily: 'var(--font-sans)', fontWeight: 300 }}
             >
-              Have a project in mind? Let's collaborate and create something extraordinary together. 
-              I'm always excited to work on innovative ideas.
+              Have a{' '}
+              <span className="text-white/80 font-medium relative">
+                project
+                <span className="absolute bottom-0 left-0 w-full h-px bg-white/20" />
+              </span>
+              {' '}in mind? Let's collaborate and create something{' '}
+              <span 
+                className="text-[#FF4D4D]"
+                style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic' }}
+              >
+                extraordinary
+              </span>
+              {' '}together.
             </p>
 
             {/* Contact info */}
@@ -160,8 +200,13 @@ const Contact = () => {
               </a>
             </div>
 
+            {/* Live Clock */}
+            <div className="mt-12 reveal">
+              <LiveClock timezone="Asia/Kolkata" className="text-white/60" />
+            </div>
+
             {/* Social links with enhanced hover */}
-            <div className="flex items-center gap-3 mt-12 reveal">
+            <div className="flex items-center gap-3 mt-8 reveal">
               {socialLinks.map((link, i) => (
                 <motion.a
                   key={i}
@@ -170,7 +215,7 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="group relative w-14 h-14 rounded-full glass flex items-center justify-center text-white/60 overflow-hidden"
                   data-magnetic
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {/* Animated background on hover */}
@@ -212,7 +257,7 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right side - Form with glass styling */}
+          {/* Right side - Form with floating labels */}
           <div className="flex flex-col justify-center">
             <motion.div 
               className="relative glass rounded-3xl p-8 lg:p-10"
@@ -220,6 +265,10 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
+              {/* Decorative corner elements */}
+              <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-[#FF4D4D]/20 rounded-tl-3xl" />
+              <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-[#FF4D4D]/20 rounded-br-3xl" />
+
               {/* Form header */}
               <div className="mb-8">
                 <h3 
@@ -246,17 +295,33 @@ const Contact = () => {
                     className="absolute inset-0 glass rounded-3xl flex flex-col items-center justify-center z-20"
                   >
                     <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ type: 'spring', stiffness: 200 }}
-                      className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4"
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                      className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-4"
                     >
-                      <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                      <motion.svg 
+                        className="w-10 h-10 text-white" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                      >
+                        <motion.path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={3} 
+                          d="M5 13l4 4L19 7"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ delay: 0.3, duration: 0.5 }}
+                        />
+                      </motion.svg>
                     </motion.div>
                     <h4 className="text-xl text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>
-                      Message Sent!
+                      Message Sent! 🎉
                     </h4>
                     <p className="text-white/50 text-sm" style={{ fontFamily: 'var(--font-sans)' }}>
                       Thanks for reaching out
@@ -266,107 +331,56 @@ const Contact = () => {
               </AnimatePresence>
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name input */}
-                <div className="relative group">
-                  <motion.div
-                    className="absolute -inset-0.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{
-                      background: focusedField === 'name' 
-                        ? 'linear-gradient(135deg, #FF4D4D50, #FF8C0050)'
-                        : 'linear-gradient(135deg, rgba(255,255,255,0.1), transparent)',
-                    }}
-                    animate={{ opacity: focusedField === 'name' ? 1 : 0 }}
-                  />
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="name"
-                      value={formState.name}
-                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      onFocus={() => setFocusedField('name')}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full glass-dark rounded-xl px-5 py-4 text-white focus:outline-none transition-all placeholder:text-white/30"
-                      style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '0.95rem' }}
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-                </div>
+                {/* Name input with floating label */}
+                <FloatingLabelInput
+                  label="Your Name"
+                  name="name"
+                  value={formState.name}
+                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                  required
+                />
 
-                {/* Email input */}
-                <div className="relative group">
-                  <motion.div
-                    className="absolute -inset-0.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{
-                      background: focusedField === 'email' 
-                        ? 'linear-gradient(135deg, #FF4D4D50, #FF8C0050)'
-                        : 'linear-gradient(135deg, rgba(255,255,255,0.1), transparent)',
-                    }}
-                    animate={{ opacity: focusedField === 'email' ? 1 : 0 }}
-                  />
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      value={formState.email}
-                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      onFocus={() => setFocusedField('email')}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full glass-dark rounded-xl px-5 py-4 text-white focus:outline-none transition-all placeholder:text-white/30"
-                      style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '0.95rem' }}
-                      placeholder="Your email"
-                      required
-                    />
-                  </div>
-                </div>
+                {/* Email input with floating label */}
+                <FloatingLabelInput
+                  label="Your Email"
+                  type="email"
+                  name="email"
+                  value={formState.email}
+                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                  required
+                />
 
-                {/* Message input */}
-                <div className="relative group">
-                  <motion.div
-                    className="absolute -inset-0.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{
-                      background: focusedField === 'message' 
-                        ? 'linear-gradient(135deg, #FF4D4D50, #FF8C0050)'
-                        : 'linear-gradient(135deg, rgba(255,255,255,0.1), transparent)',
-                    }}
-                    animate={{ opacity: focusedField === 'message' ? 1 : 0 }}
-                  />
-                  <div className="relative">
-                    <textarea
-                      id="message"
-                      value={formState.message}
-                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                      onFocus={() => setFocusedField('message')}
-                      onBlur={() => setFocusedField(null)}
-                      rows={4}
-                      className="w-full glass-dark rounded-xl px-5 py-4 text-white focus:outline-none transition-all resize-none placeholder:text-white/30"
-                      style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '0.95rem' }}
-                      placeholder="Tell me about your project..."
-                      required
-                    />
-                  </div>
-                </div>
+                {/* Message input with floating label */}
+                <FloatingLabelInput
+                  label="Tell me about your project..."
+                  name="message"
+                  value={formState.message}
+                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                  required
+                  multiline
+                  rows={4}
+                />
 
-                {/* Submit button */}
-                <motion.button
-                  type="submit"
+                {/* Submit button with ripple */}
+                <RippleButton
+                  className="w-full px-8 py-5 rounded-xl text-white font-semibold relative overflow-hidden group"
                   disabled={isSubmitting}
-                  className="group relative w-full px-8 py-5 rounded-xl overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ background: 'linear-gradient(135deg, #FF4D4D, #FF8C00)' }}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.99 }}
-                  data-magnetic
                 >
+                  <div 
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(135deg, #FF4D4D, #FF8C00)' }}
+                  />
                   {/* Shine effect */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
-                    whileHover={{ translateX: '100%' }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: '100%' }}
                     transition={{ duration: 0.6 }}
                   />
                   
                   <span 
                     className={`relative z-10 flex items-center justify-center gap-3 transition-opacity text-sm uppercase ${isSubmitting ? 'opacity-0' : 'opacity-100'}`}
-                    style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, letterSpacing: '0.15em', color: 'white' }}
+                    style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, letterSpacing: '0.15em' }}
                   >
                     Send Message
                     <motion.svg
@@ -382,7 +396,7 @@ const Contact = () => {
                   </span>
                   
                   {isSubmitting && (
-                    <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="absolute inset-0 flex items-center justify-center z-10">
                       <motion.svg 
                         className="w-5 h-5 text-white" 
                         fill="none" 
@@ -395,7 +409,7 @@ const Contact = () => {
                       </motion.svg>
                     </span>
                   )}
-                </motion.button>
+                </RippleButton>
               </form>
 
               {/* Form footer */}

@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* ===== PREMIUM FONTS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
-
 /* ===== ROSHITH ROBERT - PREMIUM PORTFOLIO ===== */
 /* A Luxury Horizontal-Scrolling Experience */
 
@@ -714,4 +711,447 @@ button:focus-visible {
   [data-magnetic]:hover {
     cursor: none;
   }
+}
+
+/* ===== FLASHLIGHT / SPOTLIGHT CURSOR EFFECT ===== */
+.spotlight-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9990;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    transparent 0%,
+    rgba(0, 0, 0, 0.03) 40%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s ease;
+}
+
+/* ===== ANIMATED NOISE TEXTURE ===== */
+.noise-texture {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9995;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  animation: noise-shift 0.5s steps(10) infinite;
+}
+
+@keyframes noise-shift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-1%, 1%); }
+  40% { transform: translate(1%, -1%); }
+  50% { transform: translate(-1%, 0); }
+  60% { transform: translate(1%, 0); }
+  70% { transform: translate(0, 1%); }
+  80% { transform: translate(0, -1%); }
+  90% { transform: translate(1%, 1%); }
+}
+
+/* ===== BUTTON RIPPLE EFFECT ===== */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple-effect 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ===== 3D TILT CARD EFFECT ===== */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.tilt-card-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+}
+
+.tilt-card:hover .tilt-card-inner {
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+}
+
+.tilt-card-content {
+  transform: translateZ(40px);
+}
+
+/* ===== FLOATING LABELS ===== */
+.floating-label-group {
+  position: relative;
+}
+
+.floating-label-group input,
+.floating-label-group textarea {
+  width: 100%;
+  padding: 1.5rem 1rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.floating-label-group input:focus,
+.floating-label-group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background: rgba(255, 77, 77, 0.05);
+  box-shadow: 0 0 0 4px rgba(255, 77, 77, 0.1);
+}
+
+.floating-label-group label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.floating-label-group textarea + label {
+  top: 1.25rem;
+  transform: none;
+}
+
+.floating-label-group input:focus + label,
+.floating-label-group input:not(:placeholder-shown) + label,
+.floating-label-group textarea:focus + label,
+.floating-label-group textarea:not(:placeholder-shown) + label {
+  top: 0.5rem;
+  transform: none;
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ===== MORPHING BLOB ===== */
+.morphing-blob {
+  animation: morph 8s ease-in-out infinite;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+@keyframes morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+  }
+  75% {
+    border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%;
+  }
+}
+
+/* ===== TIMELINE STYLES ===== */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 77, 77, 0.5) 10%,
+    rgba(255, 77, 77, 0.5) 90%,
+    transparent
+  );
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2rem;
+  top: 0.25rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.3);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover::before {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 5px rgba(255, 77, 77, 0.4);
+}
+
+/* ===== CONFETTI ANIMATION ===== */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall 3s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* ===== FULL SCREEN MENU ===== */
+.fullscreen-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(30px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreen-menu-item {
+  font-size: clamp(2rem, 8vw, 6rem);
+  font-family: var(--font-display);
+  color: white;
+  opacity: 0.6;
+  transition: all 0.4s var(--ease-out-expo);
+  position: relative;
+  padding: 0.25em 0;
+}
+
+.fullscreen-menu-item:hover {
+  opacity: 1;
+  transform: translateX(20px);
+  color: var(--color-accent);
+}
+
+.fullscreen-menu-item::after {
+  content: attr(data-index);
+  position: absolute;
+  right: -3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fullscreen-menu-item:hover::after {
+  opacity: 1;
+}
+
+/* ===== KINETIC TYPOGRAPHY ===== */
+.kinetic-text {
+  display: inline-block;
+}
+
+.kinetic-text .char {
+  display: inline-block;
+  transition: transform 0.4s var(--ease-out-expo), color 0.3s ease;
+}
+
+.kinetic-text:hover .char {
+  animation: kinetic-bounce 0.4s ease forwards;
+}
+
+.kinetic-text:hover .char:nth-child(odd) {
+  animation-delay: 0.05s;
+}
+
+@keyframes kinetic-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ===== SCROLL REVEAL MASKS ===== */
+.reveal-mask {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-mask::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+  transform-origin: right;
+  transition: transform 1s var(--ease-out-expo);
+}
+
+.reveal-mask.revealed::after {
+  transform: scaleX(0);
+}
+
+/* ===== ANIMATED MESH GRADIENT ===== */
+.mesh-gradient {
+  background: 
+    radial-gradient(at 40% 20%, rgba(255, 77, 77, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(255, 140, 0, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(147, 51, 234, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(255, 77, 77, 0.1) 0px, transparent 50%);
+  animation: mesh-move 20s ease infinite;
+}
+
+@keyframes mesh-move {
+  0%, 100% {
+    background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%, 50% 50%;
+  }
+  25% {
+    background-position: 100% 100%, 0% 0%, 100% 0%, 0% 100%, 0% 0%;
+  }
+  50% {
+    background-position: 0% 100%, 100% 100%, 0% 0%, 100% 0%, 100% 100%;
+  }
+  75% {
+    background-position: 100% 0%, 0% 100%, 100% 100%, 0% 0%, 50% 50%;
+  }
+}
+
+/* ===== LIVE CLOCK ===== */
+.live-clock {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.5;
+  }
+}
+
+/* ===== LOADING SKELETON ===== */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ===== PARALLAX LAYERS ===== */
+.parallax-container {
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  transform-style: preserve-3d;
+}
+
+.parallax-layer-back {
+  transform: translateZ(-200px) scale(1.2);
+}
+
+.parallax-layer-mid {
+  transform: translateZ(-100px) scale(1.1);
+}
+
+.parallax-layer-front {
+  transform: translateZ(0);
+}
+
+/* ===== STAGGER CHILDREN ===== */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stagger-children.animate > *:nth-child(1) { animation: stagger-in 0.6s ease forwards 0.1s; }
+.stagger-children.animate > *:nth-child(2) { animation: stagger-in 0.6s ease forwards 0.2s; }
+.stagger-children.animate > *:nth-child(3) { animation: stagger-in 0.6s ease forwards 0.3s; }
+.stagger-children.animate > *:nth-child(4) { animation: stagger-in 0.6s ease forwards 0.4s; }
+.stagger-children.animate > *:nth-child(5) { animation: stagger-in 0.6s ease forwards 0.5s; }
+.stagger-children.animate > *:nth-child(6) { animation: stagger-in 0.6s ease forwards 0.6s; }
+.stagger-children.animate > *:nth-child(7) { animation: stagger-in 0.6s ease forwards 0.7s; }
+.stagger-children.animate > *:nth-child(8) { animation: stagger-in 0.6s ease forwards 0.8s; }
+
+@keyframes stagger-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== HOVER IMAGE DISTORT ===== */
+.hover-distort {
+  transition: filter 0.4s ease;
+}
+
+.hover-distort:hover {
+  filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='turbulence'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.01' numOctaves='3' result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='10' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3C/svg%3E#turbulence");
 }

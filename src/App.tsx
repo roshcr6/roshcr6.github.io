@@ -12,6 +12,9 @@ import Navigation from './components/Navigation';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import TextRibbon from './components/TextRibbon';
+import FullScreenMenu from './components/FullScreenMenu';
+import SpotlightCursor from './components/SpotlightCursor';
+import { NoiseTexture } from './components/MicroInteractions';
 import './index.css';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -27,6 +30,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentGreeting, setCurrentGreeting] = useState(0);
   const [loaderDone, setLoaderDone] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Greeting animation cycle
   useEffect(() => {
@@ -262,11 +266,39 @@ function App() {
         </div>
       )}
 
-      {/* Noise Overlay */}
-      <div className="noise-overlay" />
+      {/* Noise Texture Overlay */}
+      <NoiseTexture />
+      
+      {/* Spotlight Cursor Effect */}
+      {!isMobile && !isLoading && <SpotlightCursor />}
       
       {/* Custom Cursor */}
       {!isMobile && <CustomCursor />}
+
+      {/* Full Screen Menu */}
+      <FullScreenMenu
+        isOpen={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        sections={sections}
+        activeSection={activeSection}
+        onNavigate={(index) => {
+          navigateToSection(index);
+          setMenuOpen(false);
+        }}
+      />
+
+      {/* Menu Toggle Button */}
+      {!isLoading && (
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="fixed top-8 right-8 z-[9998] w-14 h-14 rounded-full glass flex flex-col items-center justify-center gap-1.5 hover:bg-white/10 transition-colors"
+          data-magnetic
+        >
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        </button>
+      )}
 
       {/* Top Text Ribbon */}
       {!isMobile && !isLoading && (
